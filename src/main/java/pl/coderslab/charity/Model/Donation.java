@@ -23,9 +23,9 @@ public class Donation {
     @JoinColumn(name = "category_id")
     private List<Category> categories;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name="institution_id")
-    private Institution institution;
+    private List<Institution> institution;
 
     private String steeet;
 
