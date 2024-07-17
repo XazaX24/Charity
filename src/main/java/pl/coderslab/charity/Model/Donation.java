@@ -19,15 +19,15 @@ public class Donation {
 
     private Integer quantity;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "category_id")
-    private List<Category> categories;
+    private Category categories;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="institution_id")
-    private List<Institution> institution;
+    private Institution institution;
 
-    private String steeet;
+    private String street;
 
     private String city;
 
