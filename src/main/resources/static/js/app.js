@@ -162,7 +162,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
-
+//      document.getElementById("quantity").innerText(
+//          document.getElementsByTagName("input").namedItem("bags").value();
+//      );
+      $("#summary-quantity").text($('input[name="quantity"]').val());
+//      alert($('input[name="categories"]').is(':checked').length);
+      $('input[name="categories"]:checked').each(function() {
+        const category = $(this).siblings('.description').text();
+        $("#summary-category").text(category);
+      });
+      $('input[name="institution"]:checked').each(function() {
+        const institution = $(this).siblings('.description').children('.title').text();
+        $("#summary-institution").text(institution);
+      });
+      $("#summary-street").text($('input[name="street"]').val());
+      $("#summary-city").text($('input[name="city"]').val());
+      $("#summary-zip-code").text($('input[name="zipCode"]').val());
+      $("#summary-pick-up-date").text($('input[name="pickUpDate"]').val());
+      $("#summary-pick-up-time").text($('input[name="pickUpTime"]').val());
+      $("#summary-pick-up-comment").text($('textarea[name="pickUpComment"]').val());
+//      $("#summary-category").text($('input[name="categories"]').find((":checked")).val());
       // TODO: get data from inputs and show them in summary
     }
 
