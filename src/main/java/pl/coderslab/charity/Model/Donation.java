@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,9 +21,8 @@ public class Donation {
 
     private Integer quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category categories;
+    @ManyToMany
+    private List<Category> categories = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name="institution_id")

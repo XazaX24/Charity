@@ -165,12 +165,18 @@ document.addEventListener("DOMContentLoaded", function() {
 //      document.getElementById("quantity").innerText(
 //          document.getElementsByTagName("input").namedItem("bags").value();
 //      );
-      $("#summary-quantity").text($('input[name="quantity"]').val());
+      $("#summary-quantity").text($('input[name="quantity"]').val()+" szt. ");
 //      alert($('input[name="categories"]').is(':checked').length);
+
+      let categoryToView="";
       $('input[name="categories"]:checked').each(function() {
         const category = $(this).siblings('.description').text();
-        $("#summary-category").text(category);
+        categoryToView += category+", ";
+
       });
+      categoryToView = categoryToView.substring(0,categoryToView.length-2)
+      $("#summary-category").text(categoryToView);
+
       $('input[name="institution"]:checked').each(function() {
         const institution = $(this).siblings('.description').children('.title').text();
         $("#summary-institution").text(institution);
