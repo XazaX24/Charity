@@ -1,7 +1,13 @@
-<nav class="container container--70"  th:fragment="nav-menu">>
+<nav class="container container--70" th:fragment="nav-menu" xmlns:sec="http://www.w3.org/1999/xhtml">
     <ul class="nav--actions">
-        <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
+        <li sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+            <input type="submit" class="btn btn--small btn--without-border" value="Wyloguj">
+            </form>
+        </li>
         <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin" class="btn btn--small">Panel administracyjny</a></li>
     </ul>
 
     <ul>

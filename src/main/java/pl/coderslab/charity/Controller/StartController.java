@@ -1,5 +1,8 @@
 package pl.coderslab.charity.Controller;
 
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import pl.coderslab.charity.Repository.DonationRepository;
 import pl.coderslab.charity.Service.InstitutionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,10 @@ public class StartController {
     @RequestMapping("/")
     public String start(Model model) {
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        model.addAttribute("username",username);
         model.addAttribute("quantityCount",donationRepository.allQuantity());
         model.addAttribute("donationCount",donationRepository.allDonation());
         model.addAttribute("institutions",institutionService.institutionList());
